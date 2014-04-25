@@ -37,15 +37,15 @@ end
 sebastien_saunier = FrenchPerson.new
 
 
-# Variable d'instance
+# Variable d'instance. Elle est dispo dans un controlleur
 class User
   def initialize(name)
     @name = name
   end
 
   def say_hello
-    # "Hello, my name is " + @name.upcase
-    "Hello, my name is #{@name.upcase}"
+    # "Hello, my name is " + @name.upcase #PasBien
+    "Hello, my name is #{@name.upcase}" #Bien
   end
 end
 
@@ -53,10 +53,7 @@ user = User.new("Sebastien")
 user.name  # VA LEVER UNE EXCEPTION
 puts user.say_hello
 
-
-# Symbole
-:user
-
+0  # Variable
 
 titi = "toto"
 
@@ -71,14 +68,13 @@ victor = {
   "prenom" => "Victor",
   "nom" => "Debost"
 }
-
+#Equivalent à
 victor = {
   :age => 29,
   :prenom => "Victor",
   :nom => "Debost"
 }
-
-
+#Equivalent à (best en ruby)
 victor = {
   age: 29,
   prenom: "Victor",
@@ -88,8 +84,6 @@ victor = {
 
 puts victor[:age]
 puts victor[:prenom]
-
-
 
 class Person
   attr_reader :first_name, :last_name, :age

@@ -1,4 +1,5 @@
 $grayMediumLight: #eaeaea;
+@import "bootstrap";
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -14,4 +15,10 @@ $grayMediumLight: #eaeaea;
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+/* field errors */
+
+.field_with_errors {
+  @extend .has-error;
 }
