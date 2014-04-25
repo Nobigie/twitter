@@ -4,7 +4,7 @@ describe User do
 
   before do
     @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+                     password: "foobarkjbkjb", password_confirmation: "foobarkjbkjb")
   end
 
   subject { @user }
@@ -72,12 +72,15 @@ describe User do
   end
 
   describe "when password doesn't match confirmation" do
-    before { @user.password_confirmation = "mismatch" }
+    before { @user.password_confirmation = "bgfbf" }
     it { should_not be_valid }
   end
 
   describe "with a password that's too short" do
-    before { @user.password = @user.password_confirmation = "a" * 5 }
+    before do
+      @user.password = "a" * 7
+      @user.password_confirmation = "a" * 7
+    end
     it { should be_invalid }
   end
 
@@ -97,4 +100,5 @@ describe User do
     end
   end
 end
+
 
