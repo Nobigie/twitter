@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'will_paginate/array'
 
 describe "User pages" do
 

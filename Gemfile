@@ -9,6 +9,9 @@ gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 # Bootstrap. See https://github.com/twbs/bootstrap-sass
 gem 'bootstrap-sass', '~> 3.1.1'
+#Pagination
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
