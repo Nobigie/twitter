@@ -1,5 +1,12 @@
 == README
 
+Questions SEB:
+
+Comment render la bonne vue pour générer les erreurs dans le create micropost ?
+
+J'en suis au 10.3.3
+
+
 Tuto twitter http://ruby.railstutorial.org/chapters/static-pages#top
 
 Important commands
@@ -155,3 +162,10 @@ end
 
 
 Verbes HTTP
+
+
+Quelle différence y a t il entre user.tweets.create(arg) et user.tweets.build(arg) ? C'est quoi user.tweets.create!(arg)
+- tweet = user.tweets.build(arg) ça crée un tweet en memoire, et ca lui set user_id correctement. Il n'est pas sauvegardé en base, il faut appeler tweet.save ensuite.
+- Si tu appelles tweet.save!, ça va lever une exception si il y a une erreur de validation sur le tweet. tweet.save va fail silently si il y a une erreur (c'est ça la différence entre les méthodes save et save!). Tu peux regarder si un tweet est valide en appelant tweet.valid? qui renvoie un booléen
+- user.tweets.create(arg), ça crée un tweet en mémoire et aussitot ca le sauvegarde en base (equivalent build + save)
+- user.tweets.create!(arg), c'est l'equivalent de build + save!

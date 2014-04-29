@@ -8,23 +8,29 @@
 
 
 user_list = [
-  [ "Victor Debost", "vdebost@gmail.com", "22121985", "22121985" ],
-  [ "Barak Obama", "barack@whitehouse.com", "22121985", "22121985" ],
-  [ "Bea Fontanillo", "beafonta@gmail.com", "22121985", "22121985" ],
-  [ "Chasity Mertens", "test1@gmail.com", "22121985", "22121985" ],
-  [ "Reid Ritzer", "test2@gmail.com", "22121985", "22121985" ],
-  [ "Roselee Valois", "test3@gmail.com", "22121985", "22121985" ],
-  [ "Leeann Thrift", "test4@gmail.com", "22121985", "22121985" ],
-  [ "Allie Petway", "test5a@gmail.com", "22121985", "22121985" ],
-  [ "Genevive Shivers", "test6@gmail.com", "22121985", "22121985" ],
-  [ "Emmett Servin", "test7@gmail.com", "22121985", "22121985" ],
-  [ "Veronika Speers", "test8@gmail.com", "22121985", "22121985" ],
-  [ "Ricky Ison", "test9@gmail.com", "22121985", "22121985" ],
-  [ "Brian Wickersham", "test10@gmail.com", "22121985", "22121985" ],
-  [ "Martin Macaron", "test11@gmail.com", "22121985", "22121985" ]
+  [ "Victor Debost", "vdebost@gmail.com", "22121985", "22121985", 1 ],
+  [ "Barak Obama", "barack@whitehouse.com", "22121985", "22121985", 0 ],
+  [ "Bea Fontanillo", "beafonta@gmail.com", "22121985", "22121985", 0 ],
+  [ "Chasity Mertens", "test1@gmail.com", "22121985", "22121985", 0 ],
+  [ "Reid Ritzer", "test2@gmail.com", "22121985", "22121985", 0 ],
+  [ "Roselee Valois", "test3@gmail.com", "22121985", "22121985", 0 ],
+  [ "Leeann Thrift", "test4@gmail.com", "22121985", "22121985", 0 ],
+  [ "Allie Petway", "test5a@gmail.com", "22121985", "22121985", 0 ],
+  [ "Genevive Shivers", "test6@gmail.com", "22121985", "22121985", 0 ],
+  [ "Emmett Servin", "test7@gmail.com", "22121985", "22121985", 0 ],
+  [ "Veronika Speers", "test8@gmail.com", "22121985", "22121985", 0 ],
+  [ "Ricky Ison", "test9@gmail.com", "22121985", "22121985", 0 ],
+  [ "Brian Wickersham", "test10@gmail.com", "22121985", "22121985", 0 ],
+  [ "Martin Macaron", "test11@gmail.com", "22121985", "22121985", 0 ]
 ]
 
 
-user_list.each do |name, email, password, confirmation|
-  User.create( name: name, email: email, password: password, password_confirmation: confirmation)
+user_list.each do |name, email, password, confirmation, admin|
+  @user=User.create( name: name, email: email, password: password, password_confirmation: confirmation, admin: admin)
 end
+
+users = User.all
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.microposts.create!(content: content) }
+  end
