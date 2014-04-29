@@ -4,7 +4,7 @@ Questions SEB:
 
 Comment render la bonne vue pour générer les erreurs dans le create micropost ?
 
-J'en suis au 10.3.3
+J'en suis au 10.3.3 - les erreurs de microposts ne s'affichent pas
 
 
 Tuto twitter http://ruby.railstutorial.org/chapters/static-pages#top
