@@ -7,4 +7,10 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
 
+  def correct_user?(user)
+    @user = User.find(params[:id])
+    if current_user?(@user)
+       link_to "Edit profile", edit_user_path(current_user)
+    end
+  end
 end
