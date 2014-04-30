@@ -8,13 +8,8 @@ class MicropostsController < ApplicationController
       flash[:success] = "Micropost created!"
       redirect_to user_path(current_user)
     else
-      render 'users/1'
+      render 'users/1' #J'aimerai que ça render dans vue actuelle. que ce soit root ou users#show
     end
-  end
-
-  def feed
-    # This is preliminary. See "Following users" for the full implementation.
-    Micropost.where("user_id = ?", id)
   end
 
   def destroy

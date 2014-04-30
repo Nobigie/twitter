@@ -2,9 +2,15 @@
 
 Questions SEB:
 
-Comment render la bonne vue pour générer les erreurs dans le create micropost ?
+1) Comment render la bonne vue pour générer les erreurs dans le create micropost ?J'en suis au 10.3.3 - les erreurs de microposts ne s'affichent pas
+2) The question mark in Micropost.where("user_id = ?", id) ensures that id is properly escaped before being included in the underlying SQL query, thereby avoiding a serious security hole called SQL injection. The id attribute here is just an integer (i.e., self.id, the unique ID of the user), so there is no danger in this case, but always escaping variables injected into SQL statements is a good habit to cultivate.Que veux dire Escaped? pourquoi ça fait use SQL Query ?
+3) Comment réduite la taille des images générées par <%= link_to gravatar_for(feed_item.user), feed_item.user %> et users_helper.rb:
+  def gravatar_for(user)
+    gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
+    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
+    image_tag(gravatar_url, alt: user.name, class: "gravatar")
+  end
 
-J'en suis au 10.3.3 - les erreurs de microposts ne s'affichent pas
 
 
 Tuto twitter http://ruby.railstutorial.org/chapters/static-pages#top
