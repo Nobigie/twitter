@@ -50,6 +50,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def following?(other_user) #Est-ce que je suis en train de follower un autre user ?
+    relationships.find_by(followed_id: other_user.id) #renvoie le couple follower_id - followed_id, follower ID étant la clé primaire (ça cherche pour une clé primaire donnée?) et followed_id la clé étrangère.
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+
+
+
   private
 
     def user_params
