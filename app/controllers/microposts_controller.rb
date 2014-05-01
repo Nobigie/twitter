@@ -6,9 +6,11 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = "Micropost created!"
-      redirect_to user_path(current_user)
+      redirect_to root_url #user_path(current_user)
     else
-      render 'users/1' #J'aimerai que ça render dans vue actuelle. que ce soit root ou users#show
+      @feed_items = current_user.feed.paginate(page: params[:page])
+      #@feed_items = []
+      render 'static_pages/home' #{}"/users/#{params[:id]}" #J'aimerai que ça render dans vue actuelle. que ce soit root ou users#show
     end
   end
 
