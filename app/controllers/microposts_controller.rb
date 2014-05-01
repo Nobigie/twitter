@@ -9,7 +9,6 @@ class MicropostsController < ApplicationController
       redirect_to root_url #user_path(current_user)
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
-      #@feed_items = []
       render 'static_pages/home' #{}"/users/#{params[:id]}" #J'aimerai que ça render dans vue actuelle. que ce soit root ou users#show
     end
   end
