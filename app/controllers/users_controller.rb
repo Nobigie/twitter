@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def new
@@ -50,26 +50,24 @@ class UsersController < ApplicationController
     end
   end
 
-  def following?(other_user) #Est-ce que je suis en train de follower un autre user ?
-    relationships.find_by(followed_id: other_user.id) #renvoie le couple follower_id - followed_id, follower ID étant la clé primaire (ça cherche pour une clé primaire donnée?) et followed_id la clé étrangère.
+  def followed_users
+    @user = User.find(params[:id])
+    @title = "Who is #{@user.name} following?"
+    @users = @user.followed_users.paginate(page: params[:page], :per_page => 10)
+    render 'show_follow'
   end
 
-  def follow!(other_user)
-    relationships.create!(followed_id: other_user.id)
+  def followers
+    @user = User.find(params[:id])
+    @title = "Who are #{@user.name}/'s followers"
+    @users = @user.followers.paginate(page: params[:page], :per_page => 10)
+    render 'show_follow'
   end
-
-  def unfollow(other_user)
-    relationships.find_by(followed_id: other_user.id).destroy
-  end
-
-
-
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
     # Before action

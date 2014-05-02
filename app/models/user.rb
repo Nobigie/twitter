@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
+
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent: :destroy
@@ -28,6 +29,21 @@ class User < ActiveRecord::Base
     # This is preliminary. See "Following users" for the full implementation.
     Micropost.where("user_id = ?", id)
   end
+
+  #Qui je follow? -> Class Relationship; foreign_key: followers_id (je suis le follower) d'ou la sorce c'est les followed
+  def following?(other_user)
+    relationships.find_by(followed_id: other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
+  #Qui sont mes folowers? -> :reverse_relationships  class_name:  "Relationship"; foreign_key: followed_id (je suis le followé (followed))
+
 
   private
 

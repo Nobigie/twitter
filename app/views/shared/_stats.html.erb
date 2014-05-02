@@ -1,0 +1,15 @@
+<% @user ||= current_user %> <!--  As discussed in Box 8.2, this does nothing when @user is not nil (as on a profile page), but when it is (as on the Home page) it sets @user to the current user. Double pipes sets the value once and only once http://stackoverflow.com/questions/5230162/what-does-a-mean-in-ruby-language -->
+<div style="margin-top: 10px;">
+  <a href="<%= followed_users_user_path(@user) %>">
+    <strong id="following" class="stat">
+      <%= @user.followed_users.count %>
+    </strong>
+    following |
+  </a>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>

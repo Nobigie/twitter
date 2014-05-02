@@ -21,7 +21,16 @@ user_list = [
   [ "Veronika Speers", "test8@gmail.com", "22121985", "22121985", 0 ],
   [ "Ricky Ison", "test9@gmail.com", "22121985", "22121985", 0 ],
   [ "Brian Wickersham", "test10@gmail.com", "22121985", "22121985", 0 ],
-  [ "Martin Macaron", "test11@gmail.com", "22121985", "22121985", 0 ]
+  [ "Kevin Wickersham", "test11@gmail.com", "22121985", "22121985", 0 ],
+  [ "Steven Wickersham", "test12@gmail.com", "22121985", "22121985", 0 ],
+  [ "Mary Wickersham", "test13@gmail.com", "22121985", "22121985", 0 ],
+  [ "Lee Wickersham", "test14@gmail.com", "22121985", "22121985", 0 ],
+  [ "Kim Wickersham", "test15@gmail.com", "22121985", "22121985", 0 ],
+  [ "Bob Wickersham", "test16@gmail.com", "22121985", "22121985", 0 ],
+  [ "PouPou Wickersham", "test17@gmail.com", "22121985", "22121985", 0 ],
+  [ "Gerard Wickersham", "test18@gmail.com", "22121985", "22121985", 0 ],
+  [ "Jean Jaques Wickersham", "test19@gmail.com", "22121985", "22121985", 0 ],
+  [ "Martin Macaron", "Macaron@gmail.com", "22121985", "22121985", 0 ]
 ]
 
 
@@ -34,3 +43,9 @@ users = User.all
   content = Faker::Lorem.sentence(5)
   users.each { |user| user.microposts.create!(content: content) }
   end
+
+user  = users.first
+followed_users = users[2..10]
+followers      = users[3..20]
+followed_users.each { |followed| user.follow!(followed) }
+followers.each      { |follower| follower.follow!(user) }

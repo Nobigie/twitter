@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :users do
+    member do
+      get :followed_users, :followers #GET /users/1/following  following following_user_path(1) ET GET /users/1/followers  followers followers_user_path(1)
+    end
+  end
 
   #Static_Pages
   root  'static_pages#home'
@@ -17,6 +22,9 @@ Rails.application.routes.draw do
 
   #Micropost
   resources :microposts, only: [:create, :destroy]
+
+  #Relationships
+  resources :relationships, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
