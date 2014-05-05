@@ -26,11 +26,10 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    # This is preliminary. See "Following users" for the full implementation.
-    Micropost.where("user_id = ?", id)
+    Micropost.from_users_followed_by(self)
   end
 
-  #Qui je follow? -> Class Relationship; foreign_key: followers_id (je suis le follower) d'ou la sorce c'est les followed
+  #Qui je follow? -> Class Relationship; foreign_key: followers_id (je suis le follower) d'ou la source c'est les followed
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)
   end
