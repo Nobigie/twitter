@@ -1,7 +1,6 @@
 $("#errors").html("<%= escape_javascript(render 'shared/error_messages', :object => @micropost) %>")
 $("#micropost_count").html('<%= pluralize(current_user.microposts.count, "micropost") %>')
-$("#feed").html("<%= escape_javascript(render ('shared/feed')) %>")
 $("#micropost_content").val('')
-
+$("#feed").html("<%= escape_javascript(render ('shared/feed')) %>")
 // to be reactivated in microposts_controller
 //$("#alerts").html("<%= escape_javascript(render 'shared/alerts') %>")

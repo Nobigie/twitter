@@ -17,17 +17,12 @@
     <div class="col-md-12">
       <%= render 'shared/stats' %>
     </div>
-    <% if current_user?(@user) %>
-      <div class="col-md-12">
-        <%= render 'shared/micropost_form' %>
-      </div>
-    <% end %>
   </div>
   <div class="col-md-9">
     <div class="col-md-9">
       <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="list-group" id="feed">
+      <ol class="list-group" id="micropost_history">
         <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts %>

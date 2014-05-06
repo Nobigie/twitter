@@ -21,6 +21,7 @@ Javascript bootstrap pourquoi ça marche pas ? Bootstrap dépends de JQuery
 Pourquoi tester le format de l'email de User Valide quand on a testé si il etait invalide ? Test inutile. Devise gère toute l'autentification pour les users.
 
 Users (existe pas) vs. User (classe) vs. :users (Symbole qui n'a rien avoir avec User) vs. @user  (variable d'instance)
+
 Helper vs. controller. Les helpers sont ils accessibles depuis tous les controllers et toutes les views?
 
 
