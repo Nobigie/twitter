@@ -1,5 +1,5 @@
 <%= form_for(@micropost, remote: true) do |f| %>
-  <span id="errors"> <!-- Erreurs render en Ajnax ici --> </span>
+  <span id="errors"> <!-- Erreurs render en Ajax ici --> </span>
   <div class="form-group" style="margin-top: 10px;">
     <%= f.text_area :content, placeholder: "Compose new micropost...", value: "",class: "form-control" %>
   </div>
